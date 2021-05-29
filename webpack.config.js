@@ -22,7 +22,7 @@ module.exports = {
     },
  
 
-    //Cofiguracion del plugin
+    //CONFIGURACION PLUGINS
  
       plugins:[
         new HtmlWebPack({
