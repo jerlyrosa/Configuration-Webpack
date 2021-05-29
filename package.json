@@ -11,6 +11,9 @@
   "author": "Jerly de la Rosa",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "css-minimizer-webpack-plugin": "^3.0.0",
     "file-loader": "^6.2.0",
