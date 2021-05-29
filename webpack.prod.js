@@ -1,15 +1,15 @@
 const HtmlWebPack    = require('html-webpack-plugin');
 const MiniCssExtract = require('mini-css-extract-plugin');
-
+const CssMinimizer   = require('css-minimizer-webpack-plugin');
+const Terser         = require ('terser-webpack-plugin');
 module.exports = {
 
-    mode: "development",
-    //LIMPIANDO Y CREANDO BUILD
+    mode: "production",
     output:{
-        clean: true
+        clean: true,
+        filename: 'main.[contenthash].js',
     },
 
-    //REGLAS DEL BUILD
     module: {
         rules: [
             {
@@ -17,6 +17,7 @@ module.exports = {
                 loader: 'html-loader',
                 options:{
                     sources: false,
+                    minimize: true,
                 },
 
             },
@@ -33,23 +34,41 @@ module.exports = {
                     test:/.styles.css$/,
                     use: [ MiniCssExtract.loader, 'css-loader'] ,
 
-                },{
+                },
+                {
                     test:/\.(png|jpe?g|gif)$/,
                     loader: 'file-loader',
-                }
+                },
+                {
+                    test: /\.m?js$/,
+                    exclude: /node_modules/,
+                    use: {
+                      loader: "babel-loader",
+                      options: {
+                        presets: ['@babel/preset-env']
+                      }
+                    }
+                  }
+        ]
+    },
+    optimization:{
+        minimize: true,
+        minimizer:[
+            new CssMinimizer(),
+            new Terser(),
+
         ]
     },
  
-    //Cofiguracion del pluginn
 
       plugins:[
         new HtmlWebPack({
             title: 'WebPack App',
             template: './src/index.html',
-            filename: './index.html'//OPCIONAL
+            filename: './index.html'
         }),
         new MiniCssExtract ({
-            filename: '[name].css'
+            filename: '[name].[fullhash].css'
         }),
     ]
 
