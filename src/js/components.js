@@ -1,4 +1,4 @@
-import '../css/styles.css'
+import '../css/index.css'
 
 export const Saludar = ( nombre ) => {
     console.log( 'Creando etiqueta h1' );
