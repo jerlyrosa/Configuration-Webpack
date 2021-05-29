@@ -1,4 +1,4 @@
-# Configuración base WebPack
+# Aplicación de TODO LIST  con webpack
 
 ## Instalar
 
