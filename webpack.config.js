@@ -15,15 +15,15 @@ module.exports = {
                 test:/\.html$/,
                 loader: 'html-loader',
                 options:{
-                    sources:false,
+                    sources: false,
+                    minimize: true,
                 }
             }
         ]
     },
  
+    //Cofiguracion del pluginn
 
-    //CONFIGURACION PLUGINS
- 
       plugins:[
         new HtmlWebPack({
             title: 'WebPack App',
