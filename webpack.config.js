@@ -17,8 +17,16 @@ module.exports = {
                 options:{
                     sources: false,
                     minimize: true,
-                }
-            }
+                },
+
+            },
+            {
+                test:/\.css$/,
+                use: [
+                    'style-loader', 'css-loader'
+                ]
+
+                },
         ]
     },
  
